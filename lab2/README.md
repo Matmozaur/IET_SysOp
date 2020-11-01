@@ -28,3 +28,51 @@ Spraawdzanie za pomocą free:<br>
  jeśli teraz puścimy program zajmujący większą ilośc pamięci otrzymamy komunikat: Segmentation fault (core dumped)<br>
  
   
+## zad 3
+strace pozwala nam podglądać w jahi sposób program komunikuje się z systemem, może służyć do debuggowania i monitorowania działania programów, zwłaszcza w sytuacjach gdynie mamy dostepu do kodu źródłowego.<br>
+strace date może wypisać przykładowo: <br>
+execve("/bin/date", ["date"], 0x7fff27463b40 /* 57 vars */) = 0
+brk(NULL)                               = 0x55f3e68ff000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=91245, ...}) = 0
+mmap(NULL, 91245, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f9552d3b000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260\34\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2030544, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f9552d39000
+mmap(NULL, 4131552, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f955273a000
+mprotect(0x7f9552921000, 2097152, PROT_NONE) = 0
+mmap(0x7f9552b21000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7f9552b21000
+mmap(0x7f9552b27000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f9552b27000
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7f9552d3a540) = 0
+mprotect(0x7f9552b21000, 16384, PROT_READ) = 0
+mprotect(0x55f3e56b1000, 8192, PROT_READ) = 0
+mprotect(0x7f9552d52000, 4096, PROT_READ) = 0
+munmap(0x7f9552d3b000, 91245)           = 0
+brk(NULL)                               = 0x55f3e68ff000
+brk(0x55f3e6920000)                     = 0x55f3e6920000
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=4252880, ...}) = 0
+mmap(NULL, 4252880, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f955232b000
+close(3)                                = 0
+openat(AT_FDCWD, "/etc/localtime", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2705, ...}) = 0
+fstat(3, {st_mode=S_IFREG|0644, st_size=2705, ...}) = 0
+read(3, "TZif2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\v\0\0\0\v\0\0\0\0"..., 4096) = 2705
+lseek(3, -1707, SEEK_CUR)               = 998
+read(3, "TZif2\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\v\0\0\0\v\0\0\0\0"..., 4096) = 1707
+close(3)                                = 0
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 0), ...}) = 0
+write(1, "Sun Nov  1 16:18:59 CET 2020\n", 29Sun Nov  1 16:18:59 CET 2020
+) = 29
+close(1)                                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
+<br>
+widzimy tutaj między innymi sytuacje gdzie chcieliśmy dostać się do zasobu systemu, ale nie mogliśmy ich zlokalizować  (np. access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory))
