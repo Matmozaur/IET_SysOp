@@ -21,6 +21,12 @@ Spraawdzanie za pomocą free:<br>
 -free -b | grep ^Mem | tr -s ' ' | cut -d ' ' -f 3<br>
 -odjąć poprzedni  wynik<br>
 <br>
+
+Spraawdzanie za pomocą folderu /proc/:<br>
+-włączyć program<br>
+-sprawdzić nr. pid procesu (np w htop)
+-cat /proc/[pid]/status | grep "^VmSize"<br>
+<br>
 ## zad 2
 -ulimit -v - wyświetli maksymalną ilość pamięci wirtualnej do wykorzystania przez uzytkownika (default - unlimited)<br>
 -aby zmienić:<br>
