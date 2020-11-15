@@ -57,9 +57,20 @@ Największy plik w ~ i bezpośrednich potomkach:
 
 
 ### zad 8
-Największy plik w katalogu domowym:
-#### find ~ -type f -printf "%s\t%p\n" | sort -n | tail -1
+Plik o największej ilości bloków w katalogu domowym:
+#### find ~  -printf '%b\t%p\n' | sort -nr | head -1
 
+### zad 9
+Pliki zaczynjące sie od 'c' w postaci długiej w katalogu /usr/include i podkatalogach:
+#### find /usr/include -type f -name "c*" -ls
+
+
+### zad 10
+Pliki modyfikowane w ciągu ostatnich 2 dni:
+z uwzględnieniem podkatalogów:
+#### find ~ -mtime -2  -ls
+bez uwzględniania podkatalogów:
+#### find ~ -maxdepth 1 -mtime -2  -ls
 
 
 
