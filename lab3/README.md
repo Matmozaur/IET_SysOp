@@ -50,6 +50,16 @@ Predefiniowana inicjacyjna wartość dla uprawnień to 666 (rw-rw-rw) dla plikó
 #### umask [wartość odejmowana od domyślnych uprawnień]
 
 ### zad 7
-Predefiniowana inicjacyjna wartość dla uprawnień to 666 (rw-rw-rw) dla plików i 777 (rwxrwxrwx) dla katalogów. Jeżeli umask będzie ustawiony na 000 to nowe pliki będą dostawać uprawnienia 666. Domyślna wartośc umask to 002, zatem domyślnie pliki będą miały uprawnienia 664 a foldery 775. Aby to zmienić stosujemy polecenie:
-#### umask [wartość odejmowana od domyślnych uprawnień]
+Największy plik w katalogu domowym:
+#### find ~ -type f -printf "%s\t%p\n" | sort -n | tail -1
+Największy plik w ~ i bezpośrednich potomkach:
+#### find ~ -maxdepth 2 -type f -printf "%s\t%p\n" | sort -n | tail -1
+
+
+### zad 8
+Największy plik w katalogu domowym:
+#### find ~ -type f -printf "%s\t%p\n" | sort -n | tail -1
+
+
+
 
