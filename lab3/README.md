@@ -73,4 +73,12 @@ bez uwzględniania podkatalogów:
 #### find ~ -maxdepth 1 -mtime -2  -ls
 
 
+## Zadania sprawdzające
 
+### zad 4
+Liczba plików większych niż 12000 bajtów:
+#### find /usr/include -maxdepth 2 -type f -size +12000c | wc -l
+
+### zad 5
+Liczba plików w usr/bin mniejszych niż 2 MB:
+#### find /usr/bin -maxdepth 1 -type f -size -2M | wc -l
