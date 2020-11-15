@@ -25,3 +25,31 @@ usunąć tylko właściciel tych plików (normalnie jest to posiadacz
 prawa zapisu do katalogu).
 ##### chmod o[+/-]t [filename/dirname]
 
+### zad 3 
+Utworzenie pliku:
+##### man ls > ~/c2/text  
+Sprawdzenie praw dostępu:
+##### ls -l  ~/c2/text  
+Prawa dostępu może zmienić właściciel pliku lub root, za pomocą komendy chmod (właściciela możemy zmienić przez chown, z poziomu administratora
+
+### zad 4 
+Ograniczenie wykonywania i zapisywania:
+##### chmod 744 ~/c2/text  
+Uniemożliwienie usunięcia przez rm:
+##### chmod a-w  ~/c2 
+
+### zad 5 
+Kopiowanie:
+##### sudo cp ~/c2/text ~/c2/text2  
+##### sudo chown [user] ~/c2/text2
+Do odczytu tylko przez właściciela i grupę:
+##### chmod o-r text2
+
+### zad 6
+Predefiniowana inicjacyjna wartość dla uprawnień to 666 (rw-rw-rw) dla plików i 777 (rwxrwxrwx) dla katalogów. Jeżeli umask będzie ustawiony na 000 to nowe pliki będą dostawać uprawnienia 666. Domyślna wartośc umask to 002, zatem domyślnie pliki będą miały uprawnienia 664 a foldery 775. Aby to zmienić stosujemy polecenie:
+#### umask [wartość odejmowana od domyślnych uprawnień]
+
+### zad 7
+Predefiniowana inicjacyjna wartość dla uprawnień to 666 (rw-rw-rw) dla plików i 777 (rwxrwxrwx) dla katalogów. Jeżeli umask będzie ustawiony na 000 to nowe pliki będą dostawać uprawnienia 666. Domyślna wartośc umask to 002, zatem domyślnie pliki będą miały uprawnienia 664 a foldery 775. Aby to zmienić stosujemy polecenie:
+#### umask [wartość odejmowana od domyślnych uprawnień]
+
