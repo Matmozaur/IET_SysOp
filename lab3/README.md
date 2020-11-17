@@ -72,8 +72,51 @@ z uwzględnieniem podkatalogów:
 bez uwzględniania podkatalogów:
 #### find ~ -maxdepth 1 -mtime -2  -ls
 
+### zad 11
+#### Find . -maxdepth 1 -type f -size -12k | grep ‘./m.*h’ | wc -l 6 elementów
+
+### zad 12
+#### tar -cvf c2.tar c2 – utworzenie archiwum gzip c2.tar - kompresja rm c2 – usunięcie katalogu pierwotnego tar -cvf c2.tar c2 – odtworzenie katalogu pierwotnego
+
+### zad 13
+
+### zad 14
+#### df -T 
+– kolumna Use% zużycie w odniesieniu do liczby bloków df -h – jw. w odniesieniu do liczby struktur inode
+
+### zad 15
+#### mount -l
+– listuje punkty montowania, oraz typy używanych systemów plików lsblk – a -kolumna MAJ:MIN – numer seryjny dysku
+
+### zad 16
+#### du -a * | sort -nr
+– wyświetlenie wszystkich katalogów oraz podkatalogów, oraz posortowanie ich w kolejności malejącej względem zużycia przestrzeni
+
+### zad 17
+#### ln -s moj_ls symbol 
+– utworzenie dowiązania symbolicznego 
+#### ln ls.txt twarde
+– utworzenie dowiązania twardego 
+#### ls -R -i -sh
+– wylistowanie zawartości katalogu c2 (rekurencyjnie, wraz z numerami inode i rozmiarami) W przypadku dowiązania twardego zarówno numer inode jak i rozmiar pozostaje taki sam (jak w powiązanym pliku). Natomiast w przypadku dowiązania symbolicznego rozmiar dowiązania wynosi 0 i nadawany jest nowy numer inode.
+
+Po wykonaniu komend: 
+#### rm ls.txt
+#### rm moj_ls.txt
+
+Dowiązanie twarde nadal istnieje (można odczytać z niego dane zawarte wcześniej w pliku). Natomiast dowiązanie symboliczne jest widoczne, ale z powodu braku pliku źródłowego nie można go odczytać.
+
 
 ## Zadania sprawdzające
+
+### zad 1
+#### find -type f -printf ‘%T+ %p\n’ | sort |head -1
+
+### zad 2 
+#### ls -al /usr/include | grep ‘^d’ | wc -l
+
+### zad 3
+#### ls -al /usr/include | grep ‘^-’ | awk ‘{print $9}’ | grep ‘^m.{6}h$ | wc -l
 
 ### zad 4
 Liczba plików większych niż 12000 bajtów:
