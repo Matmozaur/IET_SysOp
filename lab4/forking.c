@@ -23,21 +23,26 @@ int main(int argc, char *argv[]) {
         malloc(1024*1024*1024/2);
         printf("pid of child from child: %d\n", getpid());
         printf("pid of parent from child: %d\n", getppid());
-        printf("Provide number.\n");
+        printf("Provide number child.\n");
         int x;
         scanf("%d", &x);
+         printf("First scanned from child %d\n", x);
     }
     else { /* parent process */
         /* parent will wait for the child to complete */ 
         // static int d[1024*1024*1024/16];
         // malloc(1024*1024*1024/2);
-        // wait(NULL);
         printf("pid of parent from parent: %d\n", getpid());
         printf("pid of child from parent: %d\n", pid);
-        printf("Provide any key to continue.\n");
-        char c;
-        scanf("%c", &c);
+        printf("Provide number parent.\n");
+        int z;
+        scanf("%d", &z);
+         printf("First scanned from parent %d\n", z);
         fclose (fp);
+        wait(NULL);
+        printf("Provide number parent.\n");
+        scanf("%d", &z);
+        printf("Secound scanned from parent %d\n", z);
         return 0;
     }
     if(pid == 0) { /* child process */ 
@@ -45,7 +50,7 @@ int main(int argc, char *argv[]) {
         int y;
         printf("Provide number.\n");
         scanf("%d", &y);
-        printf("Scanned from child %d\n", y);
+        printf("Secound scanned from child %d\n", y);
     }
     return 0;
 }
