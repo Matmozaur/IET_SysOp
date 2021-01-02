@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         /* parent will wait for the child to complete */ 
         // static int d[1024*1024*1024/16];
         // malloc(1024*1024*1024/2);
-        wait(NULL);
+        // wait(NULL);
         printf("pid of parent from parent: %d\n", getpid());
         printf("pid of child from parent: %d\n", pid);
         printf("Provide any key to continue.\n");
@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
         int y;
         printf("Provide number.\n");
         scanf("%d", &y);
+        printf("Scanned from child %d\n", y);
     }
     return 0;
 }
